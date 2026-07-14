@@ -30,4 +30,8 @@ public class ParentPage {
         JavascriptExecutor js=(JavascriptExecutor) GWD.getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
+    public static void scrolltoElementFalse(WebElement element){
+        JavascriptExecutor js=(JavascriptExecutor) GWD.getDriver();
+        js.executeScript("arguments[0].scrollIntoView(false);", element);
+    }
 }
