@@ -1,5 +1,7 @@
 package Pages;
 
+import StepDefinitions.Hooks;
+import Utilities.GWD;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,7 +24,6 @@ public class ParentPage {
         element.clear();
         element.sendKeys(text);
     }
-
 
     public static void scrollToElement(WebElement element){
         JavascriptExecutor js=(JavascriptExecutor) GWD.getDriver();

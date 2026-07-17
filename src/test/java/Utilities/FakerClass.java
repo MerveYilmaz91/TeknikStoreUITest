@@ -25,7 +25,6 @@ public class FakerClass {
         return "test" + faker.number().numberBetween(10000, 99999) + "@gmail.com";
     }
 
-
     public static String randomNumber(int min, int max) {
         if (min >= max) {
             throw new IllegalArgumentException("min değeri max değerinden küçük olmalı.");
