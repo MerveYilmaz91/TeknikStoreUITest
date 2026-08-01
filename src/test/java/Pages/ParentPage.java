@@ -12,10 +12,11 @@ public class ParentPage {
 
     public WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(20));
 
-    public static void myClick(WebElement element) {
+    public static WebElement myClick(WebElement element) {
         Hooks.setLastUsedElement(element);
         scrollToElement(element);
         element.click();
+        return element;
     }
 
     public static void mySendKeys(WebElement element, String text) {
@@ -28,5 +29,9 @@ public class ParentPage {
     public static void scrollToElement(WebElement element){
         JavascriptExecutor js=(JavascriptExecutor) GWD.getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+    public static void scrollToTop() {
+        JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
+        js.executeScript("window.scrollTo(0, 0);");
     }
 }
