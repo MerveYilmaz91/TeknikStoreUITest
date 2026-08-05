@@ -5,6 +5,7 @@ import Pages.ParentPage;
 import Utilities.GWD;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import java.util.List;
@@ -12,11 +13,11 @@ import java.util.List;
 public class _15_ProductFilterSteps {
 
     CategoryMenu cm = new CategoryMenu(GWD.getDriver());
+    Actions actions = new Actions(GWD.getDriver());
 
     @When ("Kullanici herhangi bir kategori sayfasina gider")
     public void kullaniciKategoriSecer(){
-        ParentPage.scrollToTop();
-        ParentPage.myClick(cm.kategori);
+        actions.moveToElement(cm.kategori).click().perform();
     }
 
     @Then("Ürün listeleme sayfasında ürün kartlarının ve sıralama menüsünün görünür olduğunu doğrular")
@@ -28,13 +29,13 @@ public class _15_ProductFilterSteps {
     }
 
     @When("Kullanıcı sıralama menüsünden {string} seçeneğini seçerse")
-    public void kullanici_siralama_menusunden_secenegini_secerse(String siralamaSecenegi) {
-        ParentPage.scrollToTop();
+    public void kullaniciSiralamaMenusundenSeceneginiSecerse(String siralamaSecenegi) {
+        ParentPage.scrollTopWithActions();
         cm.selectSortOption(siralamaSecenegi);
     }
 
     @Then("Ürün listesi {string} kuralına göre güncellenmelidir")
-    public void urun_listesi_kuralina_gore_guncellenmelidir(String beklenenDurum) {
+    public void urunListesiKuralinaGoreGuncellenmelidir(String beklenenDurum) {
 
         switch (beklenenDurum) {
             case "fiyata göre düşükten yükseğe":

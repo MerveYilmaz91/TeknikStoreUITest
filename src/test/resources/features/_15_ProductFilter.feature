@@ -3,6 +3,7 @@ Feature: Product Filter
 Scenario Template: : Ürünlerin <siralama_secenegi> kriterine göre başarıyla sıralanması
 Given Kullanıcı anasayfaya gider
 When Kullanici herhangi bir kategori sayfasina gider
+And Ürün listeleme sayfasında ürün kartlarının ve sıralama menüsünün görünür olduğunu doğrular
 Then Kullanıcı sıralama menüsünden "<siralama_secenegi>" seçeneğini seçerse
 And Ürün listesi "<beklenen_durum>" kuralına göre güncellenmelidir
 
