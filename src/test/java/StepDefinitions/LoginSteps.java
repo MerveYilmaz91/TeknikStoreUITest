@@ -3,6 +3,7 @@ package StepDefinitions;
 import Pages.DialogContent;
 import Utilities.ConfigReader;
 import Utilities.GWD;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -35,10 +36,12 @@ public class LoginSteps {
     @Then("User should login successfully")
     public void userShouldLoginSuccessfully() {
 
+        System.out.println(
+                "Login sonrası URL: " + GWD.getDriver().getCurrentUrl());
+
+        System.out.println(
+                "Logout görünüyor mu: " + dc.logoutButton.isDisplayed());
+
         Assert.assertTrue(dc.logoutButton.isDisplayed());
-
-
-
-
     }
 }
