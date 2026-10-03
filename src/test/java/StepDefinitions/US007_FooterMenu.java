@@ -9,24 +9,19 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
 
+import static Pages.ParentPage.scrolltoElementFalse;
+
 public class US007_FooterMenu extends GWD {
 
     FooterContent fc = new FooterContent(getDriver());
     DialogContent dc = new DialogContent(getDriver());
     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-
-    public static void scrolltoElementFalse(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
-        js.executeScript("arguments[0].scrollIntoView(false);", element);
-    }
 
     @Given("User opens the website.")
     public void openWebsite() {
