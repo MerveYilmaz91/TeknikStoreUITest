@@ -3,19 +3,23 @@ package Pages;
 import StepDefinitions.Hooks;
 import Utilities.GWD;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 public class ParentPage {
 
-    public WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(20));
+    public WebDriverWait wait = new WebDriverWait(
+            GWD.getDriver(), Duration.ofSeconds(20));
 
-    public static void myClick(WebElement element) {
+    public static WebElement myClick(WebElement element) {
         Hooks.setLastUsedElement(element);
         scrollToElement(element);
         element.click();
+        return element;
     }
 
     public static void mySendKeys(WebElement element, String text) {
@@ -25,14 +29,27 @@ public class ParentPage {
         element.sendKeys(text);
     }
 
-
-    public static void scrollToElement(WebElement element){
-        JavascriptExecutor js=(JavascriptExecutor) GWD.getDriver();
-        js.executeScript("arguments[0].scrollIntoView();", element);
+    public static void scrollToElement(WebElement element) {
+        JavascriptExecutor js =
+                (JavascriptExecutor) GWD.getDriver();
+        js.executeScript(
+                "arguments[0].scrollIntoView();", element);
     }
 
-    public static void scrolltoElementFalse(WebElement element){
-        JavascriptExecutor js=(JavascriptExecutor) GWD.getDriver();
-        js.executeScript("arguments[0].scrollIntoView(false);", element);
+    // Master branch - Existing method
+    public static void scrolltoElementFalse(WebElement element) {
+        JavascriptExecutor js =
+                (JavascriptExecutor) GWD.getDriver();
+        js.executeScript(
+                "arguments[0].scrollIntoView(false);", element);
+    }
+
+    // Izzet branch - Additional method
+    public static void scrollTopWithActions() {
+        Actions actions = new Actions(GWD.getDriver());
+        actions.keyDown(Keys.CONTROL)
+                .sendKeys(Keys.UP)
+                .keyUp(Keys.CONTROL)
+                .perform();
     }
 }
